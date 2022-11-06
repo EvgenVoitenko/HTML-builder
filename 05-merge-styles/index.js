@@ -7,6 +7,10 @@ async function f() {
         if (err) throw console.log('файл не создан - произошла ошибка');
     })
 
+    await fs.truncate(path.join(__dirname, 'project-dist', 'bundle.css'), err => {
+        if (err) throw err;
+    })
+
 
     let fileList = await fs.promises.readdir(path.join(__dirname, 'styles'), { withFileTypes: true });
     console.log(fileList);
